@@ -1,0 +1,276 @@
+:root {
+  --forest: #1f3a2b;
+  --forest-deep: #12231a;
+  --gold: #c8a45a;
+  --gold-deep: #8a6a2b;
+  --cream: #f6f1e6;
+  --ink: #1a211c;
+  --muted: #5d665f;
+  --line: rgba(31, 58, 43, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font: 16px/1.5 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: var(--forest-deep);
+  color: #fff;
+}
+
+.brand {
+  margin: 0;
+  font: 600 1.3rem Georgia, serif;
+}
+
+.sub {
+  margin: 0;
+  color: var(--gold);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.login {
+  max-width: 420px;
+  margin: 8vh auto 0;
+}
+
+.login h1 {
+  margin: 0 0 6px;
+  font: 600 1.6rem Georgia, serif;
+  color: var(--forest-deep);
+}
+
+.login p {
+  margin: 0 0 18px;
+  color: var(--muted);
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font: inherit;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.primary,
+.secondary {
+  min-height: 46px;
+  padding: 0 20px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.primary {
+  border: 0;
+  background: var(--forest);
+  color: var(--cream);
+}
+
+.login .primary {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.secondary {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--forest);
+}
+
+.link {
+  min-height: 44px;
+  padding: 0 8px;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.error {
+  min-height: 1.5em;
+  margin: 12px 0 0 !important;
+  color: #a12626 !important;
+  font-size: 0.9rem;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--forest);
+}
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(31, 58, 43, 0.08);
+}
+
+.tabs button {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--forest);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.tabs button[aria-selected='true'] {
+  background: var(--forest);
+  color: var(--cream);
+}
+
+.badge {
+  display: inline-block;
+  min-width: 1.5em;
+  margin-left: 4px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: var(--forest-deep);
+  font-size: 0.75rem;
+}
+
+.status {
+  min-height: 1.5em;
+  margin: 16px 0 8px;
+  color: var(--muted);
+}
+
+.list {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.item h2 {
+  margin: 0;
+  font: 600 1.25rem Georgia, serif;
+  color: var(--forest-deep);
+  overflow-wrap: anywhere;
+}
+
+.item time {
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.tag {
+  display: inline-block;
+  margin-top: 6px;
+  color: var(--gold-deep);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.details {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.message {
+  margin: 12px 0 16px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: var(--forest-deep);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.actions a.wa {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--forest);
+}
+
+.item.handled {
+  opacity: 0.72;
+}

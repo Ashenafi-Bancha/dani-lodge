@@ -1,0 +1,11 @@
+node_modules
+dist
+.env
+*.local
+.DS_Store
+
+# Original Bolt export, superseded by frontend/
+project/
+
+# Local tooling
+.claude/

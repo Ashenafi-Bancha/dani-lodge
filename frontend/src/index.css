@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-cream font-sans text-ink;
+  }
+
+  /* Anchor targets clear the fixed navbar */
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+
+  ::selection {
+    @apply bg-gold/30 text-forest-deep;
+  }
+
+  *:focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-gold;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .section {
+    @apply py-20 sm:py-24 lg:py-32;
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-label text-gold-deep;
+  }
+
+  .display {
+    @apply text-balance font-serif font-medium leading-[1.08] tracking-tight;
+  }
+
+  .btn {
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 text-sm font-medium tracking-wide transition-all duration-300 ease-smooth-out active:scale-[0.98];
+  }
+
+  .btn-gold {
+    @apply btn bg-gold text-forest-deep hover:bg-gold-light;
+  }
+
+  .btn-forest {
+    @apply btn bg-forest text-cream hover:bg-forest-soft;
+  }
+
+  .btn-outline-light {
+    @apply btn border border-white/40 text-white backdrop-blur-sm hover:border-gold-light hover:text-gold-light;
+  }
+
+  .btn-outline-dark {
+    @apply btn border border-forest/25 text-forest hover:border-forest hover:bg-forest hover:text-cream;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-forest/15 bg-white px-4 py-3 text-base text-ink transition-colors placeholder:text-ink/35 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/25;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-xs font-medium uppercase tracking-wider text-ink/60;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .hide-scrollbar {
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Keeps fixed bottom UI clear of the iOS home indicator */
+  .pb-safe {
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

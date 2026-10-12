@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#12231A" />
+    <title>Enquiries | Dani Lodge</title>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="brand">Dani Lodge</p>
+        <p class="sub">Enquiries</p>
+      </div>
+      <button id="signOut" class="link" hidden>Sign out</button>
+    </header>
+
+    <main>
+      <form id="login" class="card login" hidden>
+        <h1>Owner sign in</h1>
+        <p>Enter the admin key to read enquiries sent from the website.</p>
+        <label for="key">Admin key</label>
+        <input id="key" type="password" autocomplete="current-password" required />
+        <button type="submit" class="primary">Open enquiries</button>
+        <p id="loginError" class="error" role="alert"></p>
+      </form>
+
+      <section id="inbox" hidden>
+        <div class="toolbar">
+          <div class="tabs" role="tablist" aria-label="Filter enquiries">
+            <button role="tab" data-status="new" aria-selected="true">New <span id="newCount" class="badge">0</span></button>
+            <button role="tab" data-status="handled" aria-selected="false">Handled</button>
+            <button role="tab" data-status="" aria-selected="false">All</button>
+          </div>
+          <button id="refresh" class="link">Refresh</button>
+        </div>
+        <p id="status" class="status" role="status"></p>
+        <ul id="list" class="list"></ul>
+      </section>
+    </main>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

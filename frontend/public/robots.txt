@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://danilodge.com/sitemap.xml
