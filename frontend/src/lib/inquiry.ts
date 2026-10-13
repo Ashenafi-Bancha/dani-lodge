@@ -61,6 +61,12 @@ export function inquiryWhatsappLink(inquiry: Inquiry): string {
   return whatsappLink(text);
 }
 
+/**
+ * True when the site is deployed without the backend (VITE_ENQUIRIES=whatsapp
+ * at build time). The form then opens WhatsApp directly instead of calling the API.
+ */
+export const ENQUIRIES_VIA_WHATSAPP: boolean = import.meta.env.VITE_ENQUIRIES === 'whatsapp';
+
 export type SubmitResult =
   | { status: 'sent' }
   | { status: 'invalid'; errors: InquiryErrors }

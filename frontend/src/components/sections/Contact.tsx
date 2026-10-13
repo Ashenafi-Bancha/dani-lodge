@@ -3,6 +3,7 @@ import { AlertCircle, CheckCircle2, Loader2, MessageCircle, Phone, Send } from '
 import { RevealGroup, RevealItem } from '@/components/ui/Reveal';
 import SectionHeading from '@/components/ui/SectionHeading';
 import {
+  ENQUIRIES_VIA_WHATSAPP,
   INTERESTS,
   inquiryWhatsappLink,
   submitInquiry,
@@ -26,7 +27,7 @@ const EMPTY: Inquiry = {
 };
 
 type FormState =
-  | { status: 'idle' | 'prefilled' | 'sending' | 'sent' }
+  | { status: 'idle' | 'prefilled' | 'sending' | 'sent' | 'whatsapp' }
   | { status: 'failed'; message: string };
 
 interface ContactProps {
@@ -63,6 +64,13 @@ export default function Contact({ stayRequest }: ContactProps) {
     const found = validateInquiry(form);
     setErrors(found);
     if (Object.keys(found).length > 0) return;
+
+    if (ENQUIRIES_VIA_WHATSAPP) {
+      // Opened straight from the click so browsers do not block it as a pop-up
+      window.open(inquiryWhatsappLink(form), '_blank', 'noopener');
+      setState({ status: 'whatsapp' });
+      return;
+    }
 
     setState({ status: 'sending' });
     const result = await submitInquiry(form, website);
@@ -287,7 +295,7 @@ export default function Contact({ stayRequest }: ContactProps) {
                 ) : (
                   <Send size={16} aria-hidden="true" />
                 )}
-                {sending ? 'Sending…' : 'Send enquiry'}
+                {sending ? 'Sending…' : ENQUIRIES_VIA_WHATSAPP ? 'Continue on WhatsApp' : 'Send enquiry'}
               </button>
 
               <p className="mt-3 text-xs text-ink/55">
@@ -301,6 +309,13 @@ export default function Contact({ stayRequest }: ContactProps) {
                     <CheckCircle2 size={18} className="mt-0.5 shrink-0" aria-hidden="true" />
                     Your dates are filled in. Add your name, phone number and a short message so
                     the lodge can confirm availability.
+                  </p>
+                )}
+                {state.status === 'whatsapp' && (
+                  <p className="flex items-start gap-2 text-forest">
+                    <CheckCircle2 size={18} className="mt-0.5 shrink-0" aria-hidden="true" />
+                    WhatsApp has opened with your enquiry ready — press send there to reach the
+                    lodge.
                   </p>
                 )}
                 {state.status === 'sent' && (
