@@ -4,9 +4,12 @@ Website for Dani Lodge — Humbo Larena, Wolaita Sodo, Ethiopia.
 
 ```
 dani-lodge/
-├── frontend/   The public website (Vite + React + TypeScript + Tailwind)
+├── web/        The new premium website — Next.js, English + Amharic (see web/README.md)
+├── frontend/   The first version of the site (Vite + React) — currently what Vercel deploys
 └── backend/    API that stores enquiries + owner inbox at /admin (Express + SQLite)
 ```
+
+To run the new site: `cd web && npm install && npm run dev`, then open http://localhost:3000.
 
 ## Run it
 
