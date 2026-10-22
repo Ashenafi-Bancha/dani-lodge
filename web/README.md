@@ -15,12 +15,21 @@ npm run lint
 | --- | --- |
 | Every word on the site, in both languages | `src/content/en.ts`, `src/content/am.ts` |
 | Phone, WhatsApp, address, map, social links | `src/content/site.ts` |
-| Photos | `src/assets/photos/` + `src/lib/photos.ts` |
+| Photos | `src/assets/photos/` + `src/lib/photos.ts`, plus WebP sizes in `public/photos/` (below) |
 | Colours, fonts, motion tokens | `src/app/globals.css` (`@theme`) |
 | Where booking requests go (WhatsApp today; Chapa/Stripe later) | `src/lib/booking.ts` |
 
 Anything marked `sample: true` in the content files shows a visible **Sample** label on the site. Replace it with confirmed facts from the lodge and set `sample: false`.
 Sample reviews only appear in development (or with `NEXT_PUBLIC_SHOW_SAMPLE_REVIEWS=true`) and are never sent to search engines.
+
+## Adding a photo
+
+1. Save the JPEG as `src/assets/photos/<name>.jpg` and register it in `src/lib/photos.ts`.
+2. Make its web sizes (the site serves these instead of resizing on the fly):
+
+   ```bash
+   python -c "from PIL import Image; n='<name>'; im=Image.open(f'src/assets/photos/{n}.jpg').convert('RGB'); [im.resize((w, round(im.height*w/im.width)), Image.LANCZOS).save(f'public/photos/{n}-{w}.webp', quality=76, method=6) for w in (640, 1080, 1440)]"
+   ```
 
 ## Structure
 

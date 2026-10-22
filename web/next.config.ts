@@ -12,8 +12,11 @@ const nextConfig: NextConfig = {
     },
   },
   images: {
-    formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 828, 1080, 1440, 1920, 2560],
+    // Pre-made WebP sizes in public/photos (see src/lib/image-loader.ts)
+    loader: 'custom',
+    loaderFile: './src/lib/image-loader.ts',
+    deviceSizes: [640, 1080, 1440],
+    imageSizes: [320, 480],
   },
   async redirects() {
     // The site lives under /en and /am; the bare domain opens the English page
